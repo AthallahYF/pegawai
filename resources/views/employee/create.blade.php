@@ -10,6 +10,16 @@
                     </div>
                 @endif
 
+                @if ($errors->any())
+                    <div class="alert alert-danger mt-3">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $e)
+                                <li>{{ $e }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <h4 class="card-title">Tambah Pegawai</h4>
                 <p class="card-subtitle text-muted">Isi data pegawai dengan lengkap</p>
 
@@ -30,23 +40,23 @@
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Tempat Lahir</label>
-                            <input type="text" name="tempat_lahir" class="form-control">
+                            <input type="text" name="tempat_lahir" class="form-control" required>
                         </div>
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Tanggal Lahir</label>
-                            <input type="date" name="tanggal_lahir" class="form-control">
+                            <input type="date" name="tanggal_lahir" class="form-control" required>
                         </div>
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Jenis Kelamin</label><br>
-                            <input type="radio" name="jenis_kelamin" value="L"> Laki-laki
-                            <input type="radio" name="jenis_kelamin" value="P" class="ms-3"> Perempuan
+                            <input type="radio" name="jenis_kelamin" value="L" required> Laki-laki
+                            <input type="radio" name="jenis_kelamin" value="P" class="ms-3" required> Perempuan
                         </div>
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Alamat</label>
-                            <input type="text" name="alamat" class="form-control">
+                            <input type="text" name="alamat" class="form-control" required>
                         </div>
 
                         <div class="col-md-6 mt-3">
@@ -54,7 +64,7 @@
                             @foreach ($agama as $a)
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="agama_id"
-                                        id="agama{{ $a->id }}" value="{{ $a->id }}">
+                                        id="agama{{ $a->id }}" value="{{ $a->id }}" required>
                                     <label class="form-check-label" for="agama{{ $a->id }}">
                                         {{ $a->nama_agama }}
                                     </label>
@@ -64,19 +74,20 @@
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">No HP</label>
-                            <input type="text" name="no_hp" class="form-control">
+                            <input type="text" name="no_hp" class="form-control" required>
                         </div>
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">NPWP</label>
-                            <input type="text" name="npwp" class="form-control">
+                            <input type="text" name="npwp" class="form-control" required>
                         </div>
 
                         <hr class="mt-4">
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Jabatan</label>
-                            <select name="jabatan_id" class="form-select">
+                            <select name="jabatan_id" class="form-select" required>
+                                <option value="" disabled selected>Pilih</option>
                                 @foreach ($jabatan as $j)
                                     <option value="{{ $j->id }}">{{ $j->nama_jabatan }}</option>
                                 @endforeach
@@ -85,7 +96,8 @@
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Unit Kerja</label>
-                            <select name="unit_kerja_id" class="form-select">
+                            <select name="unit_kerja_id" class="form-select" required>
+                                <option value="" disabled selected>Pilih</option>
                                 @foreach ($unitKerja as $u)
                                     <option value="{{ $u->id }}">{{ $u->nama_unit }}</option>
                                 @endforeach
@@ -94,12 +106,12 @@
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Tempat Tugas</label>
-                            <input type="text" name="tempat_tugas" class="form-control">
+                            <input type="text" name="tempat_tugas" class="form-control" required>
                         </div>
 
                         <div class="col-md-6 mt-3">
                             <label class="form-label">Foto Pegawai</label>
-                            <input type="file" name="foto" class="form-control">
+                            <input type="file" name="foto" class="form-control" required>
                         </div>
 
                     </div>

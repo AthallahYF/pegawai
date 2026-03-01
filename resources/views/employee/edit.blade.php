@@ -5,6 +5,22 @@
         <div class="card">
             <div class="card-body">
 
+                @if (session('success'))
+                    <div class="alert alert-success mt-3">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger mt-3">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $e)
+                                <li>{{ $e }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <h4 class="card-title">Edit Pegawai</h4>
                 <p class="card-subtitle text-muted">Perbarui data pegawai</p>
 
